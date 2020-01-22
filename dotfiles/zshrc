@@ -12,13 +12,11 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 autoload -U compinit promptinit
 
-
 export DEFAULT_USER='pslijkhuis'
 export DOTDROP_PROFILE={{@@ env['DOTDROP_PROFILE'] @@}}
 export EDITOR=nvim
 export GOBIN=~/go/bin
 export GOPATH=~/go
-export GPG_TTY="$(tty)"
 export GPG_TTY="$(tty)"
 export HOMEBREW_GITHUB_API_TOKEN={{@@ env['GITHUB_API'] @@}}
 export HOMEBREW_INSTALL_CLEANUP=true
@@ -27,7 +25,7 @@ export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export MPD_HOST=127.0.0.1
 export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 ## Macbook specific
