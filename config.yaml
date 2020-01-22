@@ -8,4 +8,10 @@ config:
   link_on_import: nolink
   longkey: false
 dotfiles:
+  f_alacritty.yml:
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
 profiles:
+  macbook:
+    dotfiles:
+    - f_alacritty.yml
