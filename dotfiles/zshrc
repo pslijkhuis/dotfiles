@@ -71,4 +71,7 @@ bindkey -v
 PROMPT='%~ '
 precmd() { eval "$PROMPT_COMMAND" }
 
-if [ "$TMUX" = "" ]; then tmux; fi
+{%@@ if profile == "macbook" @@%}
+    if [ "$TMUX" = "" ]; then tmux; fi
+{%@@ endif @@%}
+
