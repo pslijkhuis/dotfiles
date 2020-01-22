@@ -30,10 +30,17 @@ export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
+## Macbook specific
 {%@@ if profile == "macbook" @@%}
-alias dotdrop="eval $(grep -v "^#" ~/.env) /Users/pslijkhuis/Library/Python/3.7/bin/dotdrop --cfg=~/Projects/dotfiles/config.yaml"
+    alias dotdrop="eval $(grep -v "^#" ~/.env) /Users/pslijkhuis/Library/Python/3.7/bin/dotdrop --cfg=~/Projects/dotfiles/config.yaml"
+    source /Users/pslijkhuis/Library/Preferences/org.dystroy.broot/launcher/bash/br
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+## Linux specific
 {%@@ else @@%}
-alias dotdrop="eval $(grep -v "^#" ~/.env) /usr/bin/dotdrop --cfg=~/dotfiles/config.yaml"
+    alias dotdrop="eval $(grep -v "^#" ~/.env) /usr/bin/dotdrop --cfg=~/dotfiles/config.yaml"
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {%@@ endif @@%}
 
 alias cat=bat
@@ -52,9 +59,6 @@ compinit
 zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
 
-source /Users/pslijkhuis/Library/Preferences/org.dystroy.broot/launcher/bash/br
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source <(kubectl completion zsh)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
