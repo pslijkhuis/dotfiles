@@ -34,6 +34,7 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     source /Users/pslijkhuis/Library/Preferences/org.dystroy.broot/launcher/bash/br
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    PROMPT='%~ '
 ## Linux specific
 {%@@ else @@%}
     alias dotdrop="eval $(grep -v "^#" ~/.env) /usr/bin/dotdrop --cfg=~/dotfiles/config.yaml"
@@ -66,7 +67,6 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 bindkey -v
 
-PROMPT='%~ '
 precmd() { eval "$PROMPT_COMMAND" }
 
 {%@@ if profile == "macbook" @@%}
