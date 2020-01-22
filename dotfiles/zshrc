@@ -1,0 +1,70 @@
+## {{@@ header() @@}}
+
+##############################################################################
+# History Configuration
+##############################################################################
+HISTSIZE=5000               #How many lines of history to keep in memory
+HISTFILE=~/.zsh_history     #Where to save history to disk
+SAVEHIST=5000               #Number of history entries to save to disk
+HISTDUP=erase               #Erase duplicates in the history file
+setopt    appendhistory     #Append history to the history file (no overwriting)
+setopt    sharehistory      #Share history across terminals
+setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
+autoload -U compinit promptinit
+
+
+export DEFAULT_USER='pslijkhuis'
+export DOTDROP_PROFILE={{@@ env['DOTDROP_PROFILE'] @@}}
+export EDITOR=nvim
+export GOBIN=~/go/bin
+export GOPATH=~/go
+export GPG_TTY="$(tty)"
+export GPG_TTY="$(tty)"
+export HOMEBREW_GITHUB_API_TOKEN={{@@ env['GITHUB_API'] @@}}
+export HOMEBREW_INSTALL_CLEANUP=true
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export MPD_HOST=127.0.0.1
+export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+{%@@ if profile == "macbook" @@%}
+alias dotdrop="eval $(grep -v "^#" ~/.env) /Users/pslijkhuis/Library/Python/3.7/bin/dotdrop --cfg=~/Projects/dotfiles/config.yaml"
+{%@@ else @@%}
+alias dotdrop="eval $(grep -v "^#" ~/.env) /usr/bin/dotdrop --cfg=~/dotfiles/config.yaml"
+{%@@ endif @@%}
+
+alias cat=bat
+alias download_youtube='youtube-dl --add-metadata --audio-quality 0 -x --audio-format mp3'
+alias k="kubectl"
+alias ls='colorls -lA --sd'
+alias vi=nvim
+alias vim=nvim
+
+TERM=xterm-256color
+
+precmd() { eval "$PROMPT_COMMAND" }
+promptinit
+PATH=$PATH:~/.local/bin/:/Users/pslijkhuis/Library/Python/3.7/bin:~/.krew/bin:~/go/bin
+compinit
+zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+source /Users/pslijkhuis/Library/Preferences/org.dystroy.broot/launcher/bash/br
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source <(kubectl completion zsh)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+gpgconf --launch gpg-agent
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+bindkey -v
+
+PROMPT='%~ '
+precmd() { eval "$PROMPT_COMMAND" }
+
+if [ "$TMUX" = "" ]; then tmux; fi

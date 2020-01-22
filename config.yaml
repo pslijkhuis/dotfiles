@@ -1,5 +1,5 @@
 config:
-  backup: true
+  backup: false
   banner: true
   create: true
   dotpath: dotfiles
@@ -11,7 +11,11 @@ dotfiles:
   f_alacritty.yml:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
 profiles:
   macbook:
     dotfiles:
     - f_alacritty.yml
+    - f_zshrc
