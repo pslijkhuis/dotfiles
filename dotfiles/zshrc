@@ -33,7 +33,7 @@ export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%
 ## Linux specific
 
 alias cat=bat
-alias dotdrop=/Users/PSlijk/Library/Python/3.8/bin/dotdrop --cfg=~/.config/dotdrop/config.yaml
+alias dotdrop=dotdrop --cfg=~/.config/dotdrop/config.yaml
 alias download_youtube='youtube-dl --add-metadata --audio-quality 0 -x --audio-format mp3'
 alias k="kubectl"
 alias vi=nvim
