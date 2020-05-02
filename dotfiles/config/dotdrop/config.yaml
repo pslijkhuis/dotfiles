@@ -40,6 +40,9 @@ dotfiles:
     - plug
     src: config/nvim/init.vim
     dst: ~/.config/nvim/init.vim
+  f_tmux.conf:
+    src: tmux.conf
+    dst: ~/.tmux.conf
 profiles:
   macbook:
     dotfiles:
@@ -48,15 +51,18 @@ profiles:
     - f_config.yaml
     - f_config
     - f_init.vim
+    - f_tmux.conf
   sam:
     dotfiles:
     - f_zshrc
     - f_config.yaml
     - f_init.vim
+    - f_tmux.conf
   macbook_nike:
     dotfiles:
     - f_alacritty.yml
     - f_zshrc
     - f_config
     - f_config.yaml
+    - f_tmux.conf
     - f_init.vim
