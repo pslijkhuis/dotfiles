@@ -1,6 +1,6 @@
 actions:
   sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
-  fzf-tab: git clone https://github.com/Aloxaf/fzf-tab ~/Projects/fzf-tab
+  fzf-tab: rm -rf ~/Projects/fzf-tab && git clone https://github.com/Aloxaf/fzf-tab ~/Projects/fzf-tab
 config:
   backup: false
   banner: true
