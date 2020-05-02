@@ -49,7 +49,9 @@ zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 source <(kubectl completion zsh)
+{%@@ if profile == "macbook_nike" @@%}
 source  ~/Library/Python/3.7/bin/aws_zsh_completer.sh
+{%@@ endif @@%}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
