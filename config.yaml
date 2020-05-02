@@ -1,0 +1,41 @@
+actions:
+  sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
+  fzf-tab: git clone https://github.com/Aloxaf/fzf-tab ~/Projects/fzf-tab
+config:
+  backup: false
+  banner: true
+  create: true
+  dotpath: ~/Projects/dotfiles/dotfiles
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+  f_alacritty.yml:
+    actions:
+    - sfmono
+    src: config/alacritty/alacritty.yml
+    dst: ~/.config/alacritty/alacritty.yml
+  f_zshrc:
+    actions:
+    - fzf-tab
+    src: zshrc
+    dst: ~/.zshrc
+  f_config.yaml:
+    src: config/dotdrop/config.yaml
+    dst: ~/.config/dotdrop/config.yaml
+profiles:
+  macbook:
+    dotfiles:
+    - f_alacritty.yml
+    - f_zshrc
+    - f_config.yaml
+  sam:
+    dotfiles:
+    - f_zshrc
+    - f_config.yaml
+  macbook_nike:
+    dotfiles:
+    - f_alacritty.yml
+    - f_zshrc
+    - f_config.yaml
