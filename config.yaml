@@ -1,14 +1,18 @@
+actions:
+  sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
 config:
   backup: false
   banner: true
   create: true
-  dotpath: dotfiles
+  dotpath: ~/Projects/dotfiles/dotfiles
   keepdot: false
   link_dotfile_default: nolink
   link_on_import: nolink
   longkey: false
 dotfiles:
   f_alacritty.yml:
+    actions:
+      - sfmono
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
   f_zshrc:
@@ -21,4 +25,8 @@ profiles:
     - f_zshrc
   sam:
     dotfiles:
+    - f_zshrc
+  macbook_nike:
+    dotfiles:
+    - f_alacritty.yml
     - f_zshrc
