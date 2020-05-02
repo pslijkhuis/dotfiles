@@ -26,9 +26,9 @@ export BAT_THEME=Nord
 export MPD_HOST=127.0.0.1
 export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
 
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-    PROMPT='%~ '
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+PROMPT='%~ '
 
 alias cat=bat
 alias dotdrop=dotdrop --cfg=~/.config/dotdrop/config.yaml
