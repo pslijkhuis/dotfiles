@@ -1,4 +1,4 @@
-## {{@@ header() @@}}
+## This dotfile is managed using dotdrop
 
 ##############################################################################
 # History Configuration
@@ -13,65 +13,74 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 autoload -U compinit promptinit
 
 export DEFAULT_USER='pslijkhuis'
-export DOTDROP_PROFILE={{@@ env['DOTDROP_PROFILE'] @@}}
+export DOTDROP_PROFILE=macbook
 export EDITOR=nvim
 export GOBIN=~/go/bin
 export GOPATH=~/go
 export GPG_TTY="$(tty)"
-export HOMEBREW_GITHUB_API_TOKEN={{@@ env['GITHUB_API'] @@}}
+export HOMEBREW_GITHUB_API_TOKEN=
 export HOMEBREW_INSTALL_CLEANUP=true
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export BAT_THEME=Nord
 export MPD_HOST=127.0.0.1
-export PATH="/usr/local/opt/avr-gcc@8/bin:$PATH"
 export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 ## Macbook specific
-{%@@ if profile == "macbook" @@%}
-    alias dotdrop="eval $(grep -v "^#" ~/.env) /Users/pslijkhuis/Library/Python/3.7/bin/dotdrop --cfg=~/Projects/dotfiles/config.yaml"
-    source /Users/pslijkhuis/Library/Preferences/org.dystroy.broot/launcher/bash/br
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     PROMPT='%~ '
 ## Linux specific
-{%@@ else @@%}
-    alias dotdrop="eval $(grep -v "^#" ~/.env) /usr/bin/dotdrop --cfg=~/dotfiles/config.yaml"
-    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
-{%@@ endif @@%}
 
 alias cat=bat
+alias dotdrop=/Users/PSlijk/Library/Python/3.8/bin/dotdrop --cfg=~/.config/dotdrop/config.yaml
 alias download_youtube='youtube-dl --add-metadata --audio-quality 0 -x --audio-format mp3'
 alias k="kubectl"
-alias ls='colorls -lA --sd'
 alias vi=nvim
 alias vim=nvim
-
-TERM=xterm-256color
+alias tmux='TERM=xterm-256color tmux'
+alias ls="ls -G"
 
 precmd() { eval "$PROMPT_COMMAND" }
 promptinit
-PATH=$PATH:~/.local/bin/:/Users/pslijkhuis/Library/Python/3.7/bin:~/.krew/bin:~/go/bin
+PATH=$PATH:~/.local/bin/:/Users/PSlijk/Library/Python/3.7/bin:~/.krew/bin:~/go/bin:~/.bin:/Users/PSlijk/Library/Python/3.8/bin
 compinit
 zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 source <(kubectl completion zsh)
+source  ~/Library/Python/3.7/bin/aws_zsh_completer.sh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-gpgconf --launch gpg-agent
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 bindkey -v
 
 precmd() { eval "$PROMPT_COMMAND" }
 
-{%@@ if profile == "macbook" @@%}
-    if [ "$TMUX" = "" ]; then tmux; fi
-{%@@ endif @@%}
+    if [ "$TMUX" = "" ]; then tmux a; fi
 
+export PERL_LOCAL_LIB_ROOT="$HOME/perl5"
+export PERL5LIB="$PERL_LOCAL_LIB_ROOT/lib/perl5"
+export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
+export PERL_MM_OPT="INSTALL_BASE=$PERL_LOCAL_LIB_ROOT"
+export PATH="$PERL_LOCAL_LIB_ROOT/bin:$PATH";
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
+
+source ~/Projects/fzf-tab/fzf-tab.zsh
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
