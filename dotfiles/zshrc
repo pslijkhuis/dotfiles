@@ -64,8 +64,6 @@ bindkey -v
 
 precmd() { eval "$PROMPT_COMMAND" }
 
-    if [ "$TMUX" = "" ]; then tmux a; fi
-
 export PERL_LOCAL_LIB_ROOT="$HOME/perl5"
 export PERL5LIB="$PERL_LOCAL_LIB_ROOT/lib/perl5"
 export PERL_MB_OPT="--install_base \"$PERL_LOCAL_LIB_ROOT\""
