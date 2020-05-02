@@ -56,8 +56,12 @@ source <(kubectl completion zsh)
 {%@@ if profile == "macbook_nike" @@%}
 source  ~/Library/Python/3.7/bin/aws_zsh_completer.sh
 {%@@ endif @@%}
-
+{%@@ if os == 'darwin' @@%}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+{%@@ else @@%}
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+{%@@ endif @@%}
 
 
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
