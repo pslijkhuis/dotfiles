@@ -13,7 +13,6 @@ setopt    incappendhistory  #Immediately append to the history file, not just wh
 autoload -U compinit promptinit
 
 export DEFAULT_USER='pslijkhuis'
-export DOTDROP_PROFILE=macbook
 export EDITOR=nvim
 export GOBIN=~/go/bin
 export GOPATH=~/go
