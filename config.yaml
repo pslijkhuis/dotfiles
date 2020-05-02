@@ -1,5 +1,6 @@
 actions:
   sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
+  fzf-tab: git clone https://github.com/Aloxaf/fzf-tab ~/Projects/fzf-tab
 config:
   backup: false
   banner: true
@@ -16,6 +17,8 @@ dotfiles:
     src: config/alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
   f_zshrc:
+    actions:
+      - fzf-tab
     src: zshrc
     dst: ~/.zshrc
 profiles:
