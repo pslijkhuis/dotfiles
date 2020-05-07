@@ -1,6 +1,8 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
+  install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  install-tmux-plugins: ~/.tmux/plugins/tpm/scripts/install_plugins.sh
   sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
   fzf-tab: rm -rf ~/Projects/fzf-tab && git clone https://github.com/Aloxaf/fzf-tab
     ~/Projects/fzf-tab
@@ -43,8 +45,14 @@ dotfiles:
     src: config/nvim/init.vim
     dst: ~/.config/nvim/init.vim
   f_tmux.conf:
+    actions:
+    - install-tpm
+    - install-tmux-plugins
     src: tmux.conf
     dst: ~/.tmux.conf
+  f_nord-status-content.conf:
+    src: tmux/plugins/nord-tmux/src/nord-status-content.conf
+    dst: ~/.tmux/plugins/nord-tmux/src/nord-status-content.conf
 profiles:
   macbook:
     dotfiles:
@@ -54,6 +62,7 @@ profiles:
     - f_config
     - f_init.vim
     - f_tmux.conf
+    - f_nord-status-content.conf
   sam:
     dotfiles:
     - f_zshrc
@@ -67,4 +76,6 @@ profiles:
     - f_config
     - f_config.yaml
     - f_tmux.conf
+    - f_nord-status-content.conf
     - f_init.vim
+    - f_nord-status-content.conf
