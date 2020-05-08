@@ -87,3 +87,9 @@ export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 source ~/Projects/fzf-tab/fzf-tab.zsh
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
+
+
