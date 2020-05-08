@@ -19,52 +19,52 @@ config:
   link_on_import: nolink
   longkey: false
 dotfiles:
-  f_alacritty.yml:
+  alacritty:
     actions:
     - sfmono
-    src: config/alacritty/alacritty.yml
+    src: alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
-  f_zshrc:
+  zsh:
     actions:
     - fzf-tab
     - autosuggestions
     - zsh-syntax
-    src: zshrc
+    src: zsh/zshrc
     dst: ~/.zshrc
-  f_config.yaml:
-    src: config/dotdrop/config.yaml
+  dotdrop:
+    src: dotdrop/config.yaml
     dst: ~/.config/dotdrop/config.yaml
-  f_config:
+  ncmpcpp:
     src: ncmpcpp/config
     dst: ~/.ncmpcpp/config
-  f_init.vim:
+  neovim:
     actions:
     - plug
-    src: config/nvim/init.vim
+    src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
-  f_tmux.conf:
-    src: tmux.conf
+  tmux:
+    src: tmux/tmux.conf
     dst: ~/.tmux.conf
 profiles:
   macbook:
     dotfiles:
-    - f_alacritty.yml
-    - f_zshrc
-    - f_config.yaml
-    - f_config
-    - f_init.vim
-    - f_tmux.conf
+    - alacritty
+    - zsh
+    - dotdrop
+    - ncmpcpp
+    - neovim
+    - tmux
   sam:
     dotfiles:
-    - f_zshrc
-    - f_config.yaml
-    - f_init.vim
-    - f_tmux.conf
+    - zsh
+    - dotdrop
+    - neovim
+    - tmux
   macbook_nike:
     dotfiles:
-    - f_alacritty.yml
-    - f_zshrc
-    - f_config
-    - f_config.yaml
-    - f_tmux.conf
-    - f_init.vim
+    - alacritty
+    - zsh
+    - ncmpcpp
+    - dotdrop
+    - tmux
+    - neovim
