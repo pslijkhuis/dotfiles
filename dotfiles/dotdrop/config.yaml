@@ -1,6 +1,9 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
+  install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
+    ~/.tmux/plugins/tpm
+  install-tmux-plugins: ~/.tmux/plugins/tpm/scripts/install_plugins.sh
   sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
   fzf-tab: rm -rf ~/Projects/fzf-tab && git clone https://github.com/Aloxaf/fzf-tab
     ~/Projects/fzf-tab
@@ -45,6 +48,15 @@ dotfiles:
   tmux:
     src: tmux/tmux.conf
     dst: ~/.tmux.conf
+    actions:
+    - install-tpm
+    - install-tmux-plugins
+  f_nord-status-content.conf:
+    src: tmux/plugins/nord-tmux/src/nord-status-content.conf
+    dst: ~/.tmux/plugins/nord-tmux/src/nord-status-content.conf
+  f_current_song.sh:
+    src: Projects/current_song.sh
+    dst: ~/Projects/current_song.sh
 profiles:
   macbook:
     dotfiles:
