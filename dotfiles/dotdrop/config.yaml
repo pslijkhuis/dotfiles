@@ -3,7 +3,7 @@ dynvariables:
 actions:
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
     ~/.tmux/plugins/tpm
-  install-tmux-plugins: ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+  install-tmux-plugins: ~/.tmux/plugins/tpm/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
   sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
   fzf-tab: rm -rf ~/Projects/fzf-tab && git clone https://github.com/Aloxaf/fzf-tab
     ~/Projects/fzf-tab
