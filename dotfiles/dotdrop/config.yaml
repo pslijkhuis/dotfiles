@@ -66,6 +66,12 @@ profiles:
     - ncmpcpp
     - neovim
     - tmux
+  aretha:
+    dotfiles:
+    - zsh
+    - dotdrop
+    - neovim
+    - tmux
   sam:
     dotfiles:
     - zsh
