@@ -66,6 +66,7 @@ profiles:
     - ncmpcpp
     - neovim
     - tmux
+    - f_nord-status-content.conf
   aretha:
     dotfiles:
     - zsh
@@ -86,3 +87,4 @@ profiles:
     - dotdrop
     - tmux
     - neovim
+    - f_nord-status-content.conf
