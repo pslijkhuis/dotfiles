@@ -73,18 +73,21 @@ profiles:
     - neovim
     - tmux
     - f_nord-status-content.conf
+    - f_gruvbox
   aretha:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
+    - f_gruvbox
   sam:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
+    - f_gruvbox
   macbook_nike:
     dotfiles:
     - alacritty
@@ -93,8 +96,5 @@ profiles:
     - dotdrop
     - tmux
     - neovim
-    - f_nord-status-content.conf
-  AP4AJGH612FB2B:
-    dotfiles:
-    - f_config.yaml
     - f_gruvbox
+    - f_nord-status-content.conf
