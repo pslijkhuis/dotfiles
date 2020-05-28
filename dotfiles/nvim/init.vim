@@ -10,7 +10,7 @@ Plug 'takac/vim-hardtime'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'arcticicestudio/nord-vim'
-
+Plug 'morhetz/gruvbox'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 
 Plug 'ervandew/supertab'
@@ -44,16 +44,14 @@ let g:hardtime_default_on = 1
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 " Colors and themes
-colorscheme nord
-let g:airline_theme='nord'
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 "highlight Normal ctermbg=NONE
 
 " Deoplete
 set completeopt-=preview
 let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_smart_case = 1
 call deoplete#custom#option('omni_patterns', {
 \ 'go': '[^. *\t]\.\w*',
 \})
@@ -97,7 +95,3 @@ set termguicolors
 
 " Tagbar
 au BufNewFile,BufRead Jenkinsfile* setf groovy
-augroup NordOverrides
-    autocmd!
-    autocmd ColorScheme nord highlight Comment ctermfg=61
-augroup END
