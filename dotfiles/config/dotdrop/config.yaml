@@ -98,3 +98,6 @@ profiles:
     - neovim
     - f_nord-status-content.conf
     - d_dircolors
+  AP4AJGH612FB2B:
+    dotfiles:
+    - f_config.yaml
