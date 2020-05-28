@@ -60,9 +60,9 @@ dotfiles:
   f_config.yaml:
     src: config/dotdrop/config.yaml
     dst: ~/.config/dotdrop/config.yaml
-  f_gruvbox:
-    src: dircolors/gruvbox
-    dst: ~/.dircolors/gruvbox
+  d_dircolors:
+    src: dircolors
+    dst: ~/.dircolors
 profiles:
   macbook:
     dotfiles:
@@ -94,7 +94,4 @@ profiles:
     - tmux
     - neovim
     - f_nord-status-content.conf
-  AP4AJGH612FB2B:
-    dotfiles:
-    - f_config.yaml
-    - f_gruvbox
+    - d_dircolors
