@@ -73,18 +73,21 @@ profiles:
     - neovim
     - tmux
     - f_nord-status-content.conf
+    - d_dircolors
   aretha:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
+    - d_dircolors
   sam:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
+    - d_dircolors
   macbook_nike:
     dotfiles:
     - alacritty
