@@ -1,6 +1,7 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
+  vim-plugins: vim +PlugInstall! +PlugClean +qall
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
     ~/.tmux/plugins/tpm
   install-tmux-plugins: ~/.tmux/plugins/tpm/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
@@ -43,6 +44,7 @@ dotfiles:
   neovim:
     actions:
     - plug
+    - vim-plugins
     src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
   tmux:
@@ -51,16 +53,10 @@ dotfiles:
     actions:
     - install-tpm
     - install-tmux-plugins
-  f_nord-status-content.conf:
+  nord-status:
     src: tmux/plugins/nord-tmux/src/nord-status-content.conf
     dst: ~/.tmux/plugins/nord-tmux/src/nord-status-content.conf
-  f_current_song.sh:
-    src: Projects/current_song.sh
-    dst: ~/Projects/current_song.sh
-  f_config.yaml:
-    src: config/dotdrop/config.yaml
-    dst: ~/.config/dotdrop/config.yaml
-  f_gruvbox:
+  gruvbox-dircolors:
     src: dircolors/gruvbox
     dst: ~/.dircolors/gruvbox
 profiles:
@@ -72,22 +68,22 @@ profiles:
     - ncmpcpp
     - neovim
     - tmux
-    - f_nord-status-content.conf
-    - f_gruvbox
+    - nord-status
+    - gruvbox-dircolors
   aretha:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
-    - f_gruvbox
+    - gruvbox-dircolors
   sam:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
-    - f_gruvbox
+    - gruvbox-dircolors
   macbook_nike:
     dotfiles:
     - alacritty
@@ -96,5 +92,5 @@ profiles:
     - dotdrop
     - tmux
     - neovim
-    - f_gruvbox
-    - f_nord-status-content.conf
+    - gruvbox-dircolors
+    - nord-status
