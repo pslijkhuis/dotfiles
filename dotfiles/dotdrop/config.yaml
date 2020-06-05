@@ -1,6 +1,7 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
+  vim-tools: pip3 install black isort autopep8 yamllint flake8
   vim-plugins: nvim +PlugInstall! +PlugClean +qall
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
     ~/.tmux/plugins/tpm
@@ -44,6 +45,7 @@ dotfiles:
   neovim:
     actions:
     - plug
+    - vim-tools
     - vim-plugins
     src: nvim/init.vim
     dst: ~/.config/nvim/init.vim
