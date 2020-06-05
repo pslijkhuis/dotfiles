@@ -82,7 +82,7 @@ let g:ale_linters = {
       \ 'yaml': ['yamllint']
       \ }
 let g:ale_fixers = {
-      \ 'python': ['black', 'autopep8'],
+      \ 'python': ['reorder_python_imports', 'black', 'autopep8'],
       \ 'go': ['gofmt','goimports']
       \ }
 "set background=dark
