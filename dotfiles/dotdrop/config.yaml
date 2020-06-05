@@ -1,7 +1,7 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
-  vim-plugins: vim +PlugInstall! +PlugClean +qall
+  vim-plugins: nvim +PlugInstall! +PlugClean +qall
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
     ~/.tmux/plugins/tpm
   install-tmux-plugins: ~/.tmux/plugins/tpm/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
