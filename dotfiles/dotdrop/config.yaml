@@ -1,6 +1,7 @@
 dynvariables:
   os: uname -s | tr '[:upper:]' '[:lower:]'
 actions:
+  kubectl-fzf: wget https://raw.githubusercontent.com/bonnefoa/kubectl-fzf/master/kubectl_fzf.plugin.zsh -O ~/.zsh/kubectl_fzf.plugin.zsh
   vim-tools: pip3 install black isort autopep8 yamllint flake8
   vim-plugins: nvim +PlugInstall! +PlugClean +qall
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
@@ -34,6 +35,7 @@ dotfiles:
     - fzf-tab
     - autosuggestions
     - zsh-syntax
+    - kubectl-fzf
     src: zsh/zshrc
     dst: ~/.zshrc
   dotdrop:
