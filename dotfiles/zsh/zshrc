@@ -56,11 +56,16 @@ source  ~/Library/Python/3.7/bin/aws_zsh_completer.sh
 export SSH_AUTH_SOCK=/Users/PSlijk/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 {%@@ endif @@%}
 {%@@ if os == 'darwin' @@%}
+eval "$(pyenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 {%@@ else @@%}
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 {%@@ endif @@%}
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m'
+fi
 
 
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)

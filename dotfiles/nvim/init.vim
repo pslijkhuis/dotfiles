@@ -22,10 +22,12 @@ Plug 'vimwiki/vimwiki'
 Plug 'fatih/vim-go', { 'branch': 'master' }
 
 Plug 'zchee/deoplete-jedi'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-
 Plug 'dense-analysis/ale'
 
 Plug 'psliwka/vim-smoothie'
@@ -95,3 +97,9 @@ set termguicolors
 
 " Tagbar
 au BufNewFile,BufRead Jenkinsfile* setf groovy
+
+
+nnoremap <leader><leader> :Files<CR>
+nnoremap <leader>L       :Lines<CR>
+nnoremap <leader>C       :Commits<CR>
+nnoremap <leader>b       :Buffers<CR>
