@@ -39,7 +39,7 @@ alias k="kubectl"
 alias vi=nvim
 alias vim=nvim
 alias tmux='TERM=xterm-256color tmux'
-alias ls="lsd"
+alias ls="exa"
 alias -s {yaml,yml}=vim
 alias -s git="git clone"
 
