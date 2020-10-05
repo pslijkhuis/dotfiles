@@ -22,7 +22,7 @@ export HOMEBREW_INSTALL_CLEANUP=true
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export BAT_THEME=Nord
+export BAT_THEME=gruvbox
 export MPD_HOST=127.0.0.1
 {%@@ if profile == "sam" @@%}
 export PROMPT="%{$fg[magenta]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
@@ -32,7 +32,7 @@ PROMPT='%~ '
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-alias cat=bat
+alias cat="bat -p"
 alias dotdrop=dotdrop --cfg=~/.config/dotdrop/config.yaml
 alias download_youtube='youtube-dl --add-metadata --audio-quality 0 -x --audio-format mp3'
 alias k="kubectl"
@@ -106,4 +106,50 @@ export GPG_TTY="$(tty)"
 
 source ~/.zsh/kubectl_fzf.plugin.zsh
 export KUBECTL_FZF_OPTIONS=(-1 --header-lines=2 --layout reverse -e --no-hscroll --no-sort --bind space:accept --bind tab:down)
+
+
+_z_cd() {
+    cd "$@" || return "$?"
+
+    if [ "$_ZO_ECHO" = "1" ]; then
+        echo "$PWD"
+    fi
+}
+
+z() {
+    if [ "$#" -eq 0 ]; then
+        _z_cd ~
+    elif [ "$#" -eq 1 ] && [ "$1" = '-' ]; then
+        if [ -n "$OLDPWD" ]; then
+            _z_cd "$OLDPWD"
+        else
+            echo 'zoxide: $OLDPWD is not set'
+            return 1
+        fi
+    else
+        _zoxide_result="$(zoxide query -- "$@")" && _z_cd "$_zoxide_result"
+    fi
+}
+
+zi() {
+    _zoxide_result="$(zoxide query -i -- "$@")" && _z_cd "$_zoxide_result"
+}
+
+
+alias za='zoxide add'
+
+alias zq='zoxide query'
+alias zqi='zoxide query -i'
+
+alias zr='zoxide remove'
+zri() {
+    _zoxide_result="$(zoxide query -i -- "$@")" && zoxide remove "$_zoxide_result"
+}
+
+
+_zoxide_hook() {
+    zoxide add "$(pwd -L)"
+}
+
+chpwd_functions=(${chpwd_functions[@]} "_zoxide_hook")
 
