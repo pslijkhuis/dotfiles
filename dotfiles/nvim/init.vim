@@ -25,6 +25,8 @@ Plug 'romgrk/barbar.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
@@ -113,4 +115,3 @@ require'nvim-treesitter.configs'.setup {
 -- Fuzzy find over git files in your directory
 
 EOF
-
