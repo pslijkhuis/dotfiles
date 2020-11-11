@@ -26,7 +26,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'airblade/vim-gitgutter'
-
+test
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
