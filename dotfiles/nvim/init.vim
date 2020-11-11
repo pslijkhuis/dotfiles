@@ -22,6 +22,7 @@ Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mhartington/oceanic-next'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
