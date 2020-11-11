@@ -20,17 +20,20 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'hashivim/vim-terraform'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mhartington/oceanic-next'
-
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
 colorscheme OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 filetype indent on
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 
-let g:airline_theme='gruvbox'
+let g:airline_theme='oceanicnext'
 let g:diagnostic_enable_virtual_text = 1
 let g:hardtime_default_on = 1
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
@@ -46,6 +49,27 @@ nnoremap <leader>C       :Commits<CR>
 nnoremap <leader>L       :Lines<CR>
 nnoremap <leader>b       :Buffers<CR>
 nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+" Magic buffer-picking mode
+nnoremap <silent> <Leader>s :BufferPick<CR>
+" Sort automatically by...
+" Move to previous/next
+nnoremap <silent>    <Leader>, :BufferPrevious<CR>
+nnoremap <silent>    <Leader>. :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <Leader>< :BufferMovePrevious<CR>
+nnoremap <silent>    <Leader>> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <Leader>1 :BufferGoto 1<CR>
+nnoremap <silent>    <Leader>2 :BufferGoto 2<CR>
+nnoremap <silent>    <Leader>3 :BufferGoto 3<CR>
+nnoremap <silent>    <Leader>4 :BufferGoto 4<CR>
+nnoremap <silent>    <Leader>5 :BufferGoto 5<CR>
+nnoremap <silent>    <Leader>6 :BufferGoto 6<CR>
+nnoremap <silent>    <Leader>7 :BufferGoto 7<CR>
+nnoremap <silent>    <Leader>8 :BufferGoto 8<CR>
+nnoremap <silent>    <Leader>9 :BufferLast<CR>
+" Close buffer
+nnoremap <silent>    <Leader>c :BufferClose<CR>
 
 set clipboard=unnamed
 set completeopt-=preview
@@ -56,6 +80,8 @@ set shortmess+=c
 set signcolumn=yes
 set smartindent
 set termguicolors
+
+
 
 lua << EOF
 local on_attach_vim = function(client)
@@ -80,3 +106,4 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
