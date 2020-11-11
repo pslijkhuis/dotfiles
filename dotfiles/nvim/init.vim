@@ -48,6 +48,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 nnoremap <leader><leader> :Files<CR>
+
 nnoremap <leader>C       :Commits<CR>
 nnoremap <leader>L       :Lines<CR>
 nnoremap <leader>b       :Buffers<CR>
@@ -73,6 +74,7 @@ nnoremap <silent>    <Leader>8 :BufferGoto 8<CR>
 nnoremap <silent>    <Leader>9 :BufferLast<CR>
 " Close buffer
 nnoremap <silent>    <Leader>c :BufferClose<CR>
+nnoremap <silent>    <Leader>n :new<CR>
 
 set clipboard=unnamed
 set completeopt-=preview
@@ -108,5 +110,7 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
+-- Fuzzy find over git files in your directory
+
 EOF
 
