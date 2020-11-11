@@ -6,7 +6,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
@@ -18,10 +17,14 @@ Plug 'stephpy/vim-yaml'
 Plug 'takac/vim-hardtime'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'hashivim/vim-terraform'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'mhartington/oceanic-next'
+
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
-colorscheme gruvbox
+colorscheme OceanicNext
 filetype indent on
 
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -35,6 +38,8 @@ let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_enable_underline = 0
 let g:diagnostic_auto_popup_while_jump = 1
 let g:diagnostic_insert_delay = 1
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 
 nnoremap <leader><leader> :Files<CR>
 nnoremap <leader>C       :Commits<CR>
@@ -57,6 +62,7 @@ local on_attach_vim = function(client)
   require'completion'.on_attach(client)
   require'diagnostic'.on_attach(client)
 end
+require'nvim_lsp'.terraformls.setup{}
 require'nvim_lsp'.pyls.setup{on_attach = on_attach_vim;
                              settings = {
                                pyls = {
