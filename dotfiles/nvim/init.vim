@@ -23,6 +23,8 @@ Plug 'mhartington/oceanic-next'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
