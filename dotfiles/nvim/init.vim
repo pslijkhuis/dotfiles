@@ -26,7 +26,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'airblade/vim-gitgutter'
-test
+Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
+Plug 'thecodesmith/vim-groovy'
+
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
@@ -55,6 +57,7 @@ nnoremap <leader>C       :Commits<CR>
 nnoremap <leader>L       :Lines<CR>
 nnoremap <leader>b       :Buffers<CR>
 nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <leader>p :Glow<CR>
 " Magic buffer-picking mode
 nnoremap <silent> <Leader>s :BufferPick<CR>
 " Sort automatically by...
