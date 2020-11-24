@@ -40,8 +40,8 @@ dotfiles:
     src: dotdrop/config.yaml
     dst: ~/.config/dotdrop/config.yaml
   ncmpcpp:
-    src: ncmpcpp/config
-    dst: ~/.ncmpcpp/config
+    src: ncmpcpp/
+    dst: ~/.ncmpcpp/
   neovim:
     actions:
     - plug
