@@ -52,7 +52,7 @@ alias -s git="git clone"
 
 precmd() { eval "$PROMPT_COMMAND" }
 promptinit
-PATH=$PATH:~/.local/bin/:~/Library/Python/3.7/bin:~/.krew/bin:~/go/bin:~/.bin:~/Library/Python/3.8/bin
+PATH=$PATH:~/.local/bin/:~/Library/Python/3.9/bin:~/.krew/bin:~/go/bin:~/.bin
 compinit
 zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
