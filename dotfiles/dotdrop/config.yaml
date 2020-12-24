@@ -29,6 +29,9 @@ dotfiles:
     - sfmono
     src: alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
+  mpd:
+    src: mpd/mpd.conf
+    dst: ~/.mpd/mpd.conf
   zsh:
     actions:
     - fzf-tab
@@ -40,8 +43,8 @@ dotfiles:
     src: dotdrop/config.yaml
     dst: ~/.config/dotdrop/config.yaml
   ncmpcpp:
-    src: ncmpcpp/config
-    dst: ~/.ncmpcpp/config
+    src: ncmpcpp/
+    dst: ~/.ncmpcpp/
   neovim:
     actions:
     - plug
@@ -72,6 +75,7 @@ profiles:
     - tmux
     - nord-status
     - gruvbox-dircolors
+    - mpd
   aretha:
     dotfiles:
     - zsh
@@ -96,3 +100,4 @@ profiles:
     - neovim
     - gruvbox-dircolors
     - nord-status
+    - mpd
