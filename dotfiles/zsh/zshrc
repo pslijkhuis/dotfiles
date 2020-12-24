@@ -57,6 +57,13 @@ compinit
 zstyle ':completion:*' menu select 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 fpath=(/usr/local/share/zsh-completions $fpath)
 
+autoload bashcompinit
+bashcompinit
+_get_comp_words_by_ref() { :; }
+compopt() { :; }
+_filedir() { :; }
+eval "$(beet completion)"
+
 source <(kubectl completion zsh)
 {%@@ if profile == "macbook_nike" @@%}
 source  ~/Library/Python/3.7/bin/aws_zsh_completer.sh
