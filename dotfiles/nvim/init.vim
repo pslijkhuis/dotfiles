@@ -14,7 +14,6 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'psliwka/vim-smoothie'
 Plug 'psliwka/vim-smoothie'
 Plug 'stephpy/vim-yaml'
-Plug 'takac/vim-hardtime'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'hashivim/vim-terraform'
@@ -28,11 +27,17 @@ Plug 'RishabhRD/nvim-lsputils'
 Plug 'airblade/vim-gitgutter'
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
 Plug 'thecodesmith/vim-groovy'
+Plug 'ayu-theme/ayu-vim'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
-colorscheme OceanicNext
+
+let ayucolor="mirage"
+colorscheme ayu
+
+
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 filetype indent on
@@ -42,8 +47,6 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 
 let g:airline_theme='oceanicnext'
 let g:diagnostic_enable_virtual_text = 1
-let g:hardtime_default_on = 1
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_enable_underline = 0
 let g:diagnostic_auto_popup_while_jump = 1
