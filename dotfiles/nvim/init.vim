@@ -1,4 +1,3 @@
-set nocompatible               " be improved, required
 filetype plugin on
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
@@ -9,13 +8,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie'
 Plug 'psliwka/vim-smoothie'
 Plug 'stephpy/vim-yaml'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'hashivim/vim-terraform'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'mhartington/oceanic-next'
@@ -30,6 +26,10 @@ Plug 'thecodesmith/vim-groovy'
 Plug 'ayu-theme/ayu-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'itchyny/lightline.vim'    " Dependency: status line
+Plug 'spywhere/lightline-lsp'
+
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
@@ -95,18 +95,37 @@ set smartindent
 set termguicolors
 
 
+let g:lightline = {}
+
+let g:lightline.component_expand = {
+      \  'linter_hints': 'lightline#lsp#hints',
+      \  'linter_infos': 'lightline#lsp#infos',
+      \  'linter_warnings': 'lightline#lsp#warnings',
+      \  'linter_errors': 'lightline#lsp#errors',
+      \  'linter_ok': 'lightline#lsp#ok',
+      \ }
+
+let g:lightline.component_type = {
+      \     'linter_hints': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+let g:lightline.active = { 'right': [[ 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_hints', 'linter_ok' ]] }
+
 
 lua << EOF
 local on_attach_vim = function(client)
   require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
 end
 require'lspconfig'.terraformls.setup{}
 require'lspconfig'.pyls.setup{on_attach = on_attach_vim;
                              settings = {
                                pyls = {
                                   plugins = {
-                                       pydocstyle = {enabled = true}
+                                       pydocstyle = {enabled = false}
                                        }
                                    }
                                  }
@@ -119,4 +138,7 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
 EOF
+
