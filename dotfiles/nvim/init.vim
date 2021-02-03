@@ -29,7 +29,7 @@ Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
 Plug 'thecodesmith/vim-groovy'
 Plug 'ayu-theme/ayu-vim'
 Plug 'Yggdroot/indentLine'
-
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 call plug#end()
 
 autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
