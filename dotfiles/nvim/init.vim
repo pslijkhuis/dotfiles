@@ -23,19 +23,20 @@ Plug 'RishabhRD/nvim-lsputils'
 Plug 'airblade/vim-gitgutter'
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall'}
 Plug 'thecodesmith/vim-groovy'
-Plug 'ayu-theme/ayu-vim'
 Plug 'Yggdroot/indentLine'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'itchyny/lightline.vim'    " Dependency: status line
-Plug 'spywhere/lightline-lsp'
+Plug 'b3nj5m1n/kommentary'
+Plug 'sainnhe/gruvbox-material'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'psf/black', { 'branch': 'stable' }
 
 call plug#end()
 
-autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.py execute ':Black'
 
-let ayucolor="mirage"
-colorscheme ayu
+let g:gruvbox_material_background = 'soft'
+colorscheme gruvbox-material
 
 
 let g:oceanic_next_terminal_bold = 1
@@ -59,7 +60,7 @@ nnoremap <leader><leader> :Files<CR>
 nnoremap <leader>C       :Commits<CR>
 nnoremap <leader>L       :Lines<CR>
 nnoremap <leader>b       :Buffers<CR>
-nnoremap <silent> ff    <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> ff    <cmd>:Black<CR>
 nnoremap <leader>p :Glow<CR>
 " Magic buffer-picking mode
 nnoremap <silent> <Leader>s :BufferPick<CR>
@@ -137,8 +138,6 @@ require'nvim-treesitter.configs'.setup {
     disable = { "c", "rust" },  -- list of language that will be disabled
   },
 }
-
-local saga = require 'lspsaga'
-saga.init_lsp_saga()
+require('kommentary.config').use_extended_mappings()
 EOF
 

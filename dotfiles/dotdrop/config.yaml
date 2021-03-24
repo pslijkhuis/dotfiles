@@ -6,7 +6,8 @@ actions:
   install-tpm: rm -rf ~/.tmux/plugins &&  git clone https://github.com/tmux-plugins/tpm
     ~/.tmux/plugins/tpm
   install-tmux-plugins: ~/.tmux/plugins/tpm/tpm && ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-  sfmono: brew tap epk/epk && brew cask install font-sf-mono-nerd-font
+  sfmono: brew install font-sf-mono-nerd-font
+  firamono: brew install homebrew/cask-fonts/font-fira-code-nerd-font
   fzf-tab: rm -rf ~/Projects/fzf-tab && git clone https://github.com/Aloxaf/fzf-tab
     ~/Projects/fzf-tab
   autosuggestions: rm -rf ~/.zsh/zsh-autosuggestions && git clone https://github.com/zsh-users/zsh-autosuggestions
@@ -27,6 +28,7 @@ dotfiles:
   alacritty:
     actions:
     - sfmono
+    - firamono
     src: alacritty/alacritty.yml
     dst: ~/.config/alacritty/alacritty.yml
   mpd:
@@ -61,9 +63,6 @@ dotfiles:
   nord-status:
     src: tmux/plugins/nord-tmux/src/nord-status-content.conf
     dst: ~/.tmux/plugins/nord-tmux/src/nord-status-content.conf
-  gruvbox-dircolors:
-    src: dircolors/gruvbox
-    dst: ~/.dircolors/gruvbox
 profiles:
   macbook:
     dotfiles:
@@ -74,7 +73,6 @@ profiles:
     - neovim
     - tmux
     - nord-status
-    - gruvbox-dircolors
     - mpd
   aretha:
     dotfiles:
@@ -82,14 +80,12 @@ profiles:
     - dotdrop
     - neovim
     - tmux
-    - gruvbox-dircolors
   sam:
     dotfiles:
     - zsh
     - dotdrop
     - neovim
     - tmux
-    - gruvbox-dircolors
   macbook_nike:
     dotfiles:
     - alacritty
@@ -98,6 +94,5 @@ profiles:
     - dotdrop
     - tmux
     - neovim
-    - gruvbox-dircolors
     - nord-status
     - mpd
