@@ -50,7 +50,6 @@ fi
 alias -s {yaml,yml}=vim
 alias -s git="git clone"
 
-precmd() { eval "$PROMPT_COMMAND" }
 promptinit
 PATH=$PATH:~/.local/bin/:~/Library/Python/3.9/bin:~/.krew/bin:~/go/bin:~/.bin
 compinit
@@ -66,6 +65,9 @@ eval "$(beet completion)"
 
 source <(kubectl completion zsh)
 {%@@ if os == 'darwin' @@%}
+precmd() { export AWS_PROFILE=$(cat /tmp/aws) }
+bindkey -s '^o' '~/Projects/cluster_selector/run.sh^M'
+bindkey -s '^p' 'tmux popup ncmpcpp^M'
 export SSH_AUTH_SOCK=~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 eval "$(pyenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -85,8 +87,6 @@ export GPG_TTY="$(tty)"
 gpgconf --launch gpg-agent
 
 bindkey -v
-
-precmd() { eval "$PROMPT_COMMAND" }
 
 export PERL_LOCAL_LIB_ROOT="$HOME/perl5"
 export PERL5LIB="$PERL_LOCAL_LIB_ROOT/lib/perl5"
